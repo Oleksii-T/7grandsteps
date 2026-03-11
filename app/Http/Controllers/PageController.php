@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Enums\FeedbackStatus;
 use App\Enums\PageStatus;
 use App\Models\Author;
+use App\Models\Category;
 use App\Models\Feedback;
 use App\Models\FeedbackBan;
 use App\Models\Page;
@@ -17,13 +18,16 @@ class PageController extends Controller
     {
         $page = Page::get('/');
         $q = Post::publised()->latest('published_at');
-        $latestReviews = (clone $q)->whereRelation('category', 'slug', 'reviews')->limit(3)->get();
-        $latestGuides = (clone $q)->whereRelation('category', 'slug', 'guides')->limit(2)->get();
-        $latestLists = (clone $q)->whereRelation('category', 'slug', 'lists')->limit(2)->get();
-        $latestNews = (clone $q)->whereRelation('category', 'slug', 'news')->limit(4)->get();
+        $latestIndustryNews = (clone $q)->whereRelation('tags', 'slug', 'industry')->limit(2)->get();
+        $latestPcNews = (clone $q)->whereRelation('tags', 'slug', 'pc')->limit(3)->get();
+        $latestXboxNews = (clone $q)->whereHas('tags', fn ($qq) => $qq->whereIn('slug', ['xbox-one', 'xbox-series-x-s', 'xbox']))->limit(3)->get();
+        $latestPsNews = (clone $q)->whereHas('tags', fn ($qq) => $qq->whereIn('slug', ['playstation-5', 'playstation-4']))->limit(2)->get();
+        $ids = $latestIndustryNews->pluck('id')->merge($latestPcNews->pluck('id'))->merge($latestXboxNews->pluck('id'))->merge($latestPsNews->pluck('id'));
+        $latestNews = (clone $q)->whereRelation('category', 'slug', 'news')->whereNotIn('id', $ids)->limit(8)->get();
+        $newsCategory = Category::where('slug', 'news')->first();
         $authors = Author::get();
 
-        return view('index', compact('page', 'authors', 'latestReviews', 'latestGuides', 'latestNews', 'latestLists'));
+        return view('index', compact('page', 'authors', 'latestIndustryNews', 'latestPcNews', 'latestXboxNews', 'latestPsNews', 'latestNews', 'newsCategory'));
     }
 
     public function show(Request $request)

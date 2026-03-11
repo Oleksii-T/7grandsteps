@@ -12,7 +12,7 @@
     <meta name="description" content="@yield('description', $page?->meta_description)">
     <meta name="robots" content="@yield('meta-robots', 'index, follow, max-image-preview:large')">
     <meta property="og:url" content="https://localhost.com{{request()->getRequestUri()}}">
-    <meta property="og:site_name" content="RCGameClub">
+    <meta property="og:site_name" content="7grandsteps">
     <meta property="og:type" content="@yield('meta-type', 'website')">
     <meta property="og:locale" content="en_US">
     <meta property="og:image:width" content="1500">
@@ -60,7 +60,9 @@
     @endadmin
     
 
+    <x-header />
     @yield('content')
+    <x-footer />
     @yield('popups')
 </body>
 

@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Models\Category;
 use App\Models\PageBlock;
+use App\Models\Tag;
 use Carbon\Carbon;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Cache;
@@ -64,6 +65,12 @@ class AppServiceProvider extends ServiceProvider
                 ];
             }
             $view->with('LaravelDataForJS', json_encode($data));
+
+            $topTags = Cache::remember('top_tags', 60 * 24, fn () => Tag::withCount('posts')
+                ->orderByDesc('posts_count')
+                ->limit(20)
+                ->get());
+            $view->with('topTags', $topTags);
 
             $header = Cache::remember('header', 60 * 10, fn () => PageBlock::whereRelation('page', 'link', '/')->where('name', 'header')->first());
             $view->with('header', $header);
