@@ -1,7 +1,7 @@
 <footer class="site-footer">
   <div class="container footer-wrap">
     <div class="footer-main">
-      <p class="footer-about">7grandsteps delivers concise, credible game coverage built for readers who want signal over noise.</p>
+      <p class="footer-about">{{$footer->show('text')}}</p>
       <nav aria-label="Footer">
         <ul class="footer-links">
           <li><a href="{{ route('about-us') }}">About</a></li>

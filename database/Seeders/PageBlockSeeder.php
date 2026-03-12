@@ -20,30 +20,135 @@ class PageBlockSeeder extends Seeder
                 'header' => [
                     //
                 ],
-                'hero' => [
-                    'text-1' => [
+                'hero-section' => [
+                    'title' => [
                         'type' => 'text',
-                        'value' => 'In a world where releases drop fast and rumors spread faster,',
+                        'value' => 'Checkpoint Daily',
                     ],
-                    'text-2' => [
+                    'sub-title' => [
                         'type' => 'text',
-                        'value' => 'the real story can be hard to find.',
+                        'value' => 'Games, culture, releases, and industry shifts worth your attention.',
                     ],
-                    'text-3' => [
+                    'latest-news' => [
                         'type' => 'text',
-                        'value' => 'So we track updates, patch notes, and launches and break them down to spotlight the wins, the misses, and the moments worth your time.',
+                        'value' => 'Latest News',
                     ],
-                    'text-4' => [
+                    'category-1-name' => [
                         'type' => 'text',
-                        'value' => 'Because gaming news should be clear.',
+                        'value' => 'Industry',
+                    ],
+                    'category-1-title' => [
+                        'type' => 'text',
+                        'value' => 'Strategy shifts, studio bets, and the business stories defining the year.',
+                    ],
+                    'category-1-text' => [
+                        'type' => 'text',
+                        'value' => 'The biggest industry moves rarely look dramatic at first. We track the deals, resets, and executive calls that change what gets made next.',
+                    ],
+                    'category-2-name' => [
+                        'type' => 'text',
+                        'value' => 'PC',
+                    ],
+                    'category-2-title' => [
+                        'type' => 'text',
+                        'value' => 'Performance, mods, ports, and the configuration wars.',
+                    ],
+                    'category-3-name' => [
+                        'type' => 'text',
+                        'value' => 'Xbox',
+                    ],
+                    'category-3-title' => [
+                        'type' => 'text',
+                        'value' => 'Game Pass pressure, platform pacing, and the long view.',
+                    ],
+                    'category-4-name' => [
+                        'type' => 'text',
+                        'value' => 'PlayStation',
+                    ],
+                    'category-4-title' => [
+                        'type' => 'text',
+                        'value' => 'Prestige releases, ecosystem updates, and audience retention.',
+                    ],
+                    'see-all-budge' => [
+                        'type' => 'text',
+                        'value' => 'Archive',
+                    ],
+                    'see-all-link' => [
+                        'type' => 'text',
+                        'value' => 'See All News',
+                    ],
+                    'see-all-text' => [
+                        'type' => 'text',
+                        'value' => 'Jump to the full stream of headlines, updates, reviews, and platform coverage.',
+                    ],
+                ],
+                'about-us-section' => [
+                    'title' => [
+                        'type' => 'text',
+                        'value' => 'About Us',
+                    ],
+                    'content' => [
+                        'type' => 'editor',
+                        'value' => '<p>Checkpoint Daily is an independent game publication covering launches, esports, platform updates, and long-form analysis.We focus on accurate reporting, clean writing, and practical player-focused context.</p>',
+                    ],
+                ],
+                'features-section' => [
+                    'title' => [
+                        'type' => 'text',
+                        'value' => 'Features',
+                    ],
+                    'content' => [
+                        'type' => 'editor',
+                        'value' => '<ul><li>Daily headline digest across PC, console, and mobile.</li><li>Weekend deep dives into design, balance, and monetization trends.</li><li>Hands-on previews and benchmark-backed hardware guides.</li></ul>',
+                    ],
+                ],
+                'authors-section' => [
+                    'title' => [
+                        'type' => 'text',
+                        'value' => 'Authors',
+                    ],
+                    'content' => [
+                        'type' => 'editor',
+                        'value' => '',
+                    ],
+                ],
+                'contact-section' => [
+                    'title' => [
+                        'type' => 'text',
+                        'value' => 'Contact',
+                    ],
+                    'content' => [
+                        'type' => 'editor',
+                        'value' => '<p>For press inquiries, story tips, partnerships, or corrections, visit our dedicated contact page.</p>',
                     ],
                     'cta' => [
                         'type' => 'text',
-                        'value' => 'Enter',
+                        'value' => 'Go to Contact Us page',
+                    ],
+                ],
+                'latest-news-section' => [
+                    'title' => [
+                        'type' => 'text',
+                        'value' => 'Latest News',
+                    ],
+                    'sub-title' => [
+                        'type' => 'text',
+                        'value' => 'Live updates and editor picks covering the stories shaping the week.',
+                    ],
+                    'updated' => [
+                        'type' => 'text',
+                        'value' => 'Updated',
+                    ],
+                    'see-all-news' => [
+                        'type' => 'text',
+                        'value' => 'See All News',
                     ],
                 ],
                 'footer' => [
-                    //
+                    'text' => [
+                        'type' => 'text',
+                        'value' => '7grandsteps delivers concise, credible game coverage built for readers who want signal over noise.',
+                    ],
                 ],
             ],
             'contact' => [
@@ -54,7 +159,7 @@ class PageBlockSeeder extends Seeder
                     ],
                     'text' => [
                         'type' => 'text',
-                        'value' => 'We are happy to hear from you.',
+                        'value' => 'Questions, corrections, sponsorship requests, or tips? Send us a message and our editorial team will respond.',
                     ],
                 ],
                 'form' => [
@@ -66,39 +171,43 @@ class PageBlockSeeder extends Seeder
                 'we-offer' => [
                     'title' => [
                         'type' => 'text',
-                        'value' => 'What Help Can We Offer?',
+                        'value' => 'What We Can Offer',
+                    ],
+                    'sub-title' => [
+                        'type' => 'text',
+                        'value' => 'Editorial help, partnership support, and fast routing to the right team.',
                     ],
                     'card-1-title' => [
                         'type' => 'text',
-                        'value' => 'News Tips',
+                        'value' => 'Corrections & Updates',
                     ],
                     'card-1-text' => [
                         'type' => 'text',
-                        'value' => 'Share new findings, stories, or evidence you want verified.',
+                        'value' => 'Report an issue in an article and we will review and patch the content when verified.',
                     ],
                     'card-2-title' => [
                         'type' => 'text',
-                        'value' => 'Partnerships',
+                        'value' => 'Press & Media',
                     ],
                     'card-2-text' => [
                         'type' => 'text',
-                        'value' => 'Explore collaborations that keep facts accessible and open.',
+                        'value' => 'Reach our editorial team for interview requests, statement checks, and media coordination.',
                     ],
                     'card-3-title' => [
                         'type' => 'text',
-                        'value' => 'Press Kits',
+                        'value' => 'Partnership Requests',
                     ],
                     'card-3-text' => [
                         'type' => 'text',
-                        'value' => 'Request assets, statements, and media information.',
+                        'value' => 'Discuss sponsorships and branded opportunities that fit our audience and standards.',
                     ],
                     'card-4-title' => [
                         'type' => 'text',
-                        'value' => 'Support',
+                        'value' => 'Story Tips',
                     ],
                     'card-4-text' => [
                         'type' => 'text',
-                        'value' => 'Get help with submissions, corrections, or site access.',
+                        'value' => 'Send leads, launches, or industry changes and we will route them to the right editor.',
                     ],
                 ],
                 'wait' => [
@@ -106,41 +215,9 @@ class PageBlockSeeder extends Seeder
                         'type' => 'text',
                         'value' => 'How Long to Wait for the Answer?',
                     ],
-                    'sub-title' => [
-                        'type' => 'text',
-                        'value' => 'Response times depend on the complexity of your inquiry.',
-                    ],
-                    'bullet-1' => [
-                        'type' => 'text',
-                        'value' => 'General questions: 2 business days.',
-                    ],
-                    'bullet-2' => [
-                        'type' => 'text',
-                        'value' => 'Press and partnerships: 3 business days.',
-                    ],
-                    'bullet-3' => [
-                        'type' => 'text',
-                        'value' => 'Investigations or reviews: up to 4 business days.',
-                    ],
-                ],
-            ],
-            '{category}' => [
-                'running' => [
-                    '1' => [
-                        'type' => 'text',
-                        'value' => '09 TRUTH DROPS | 07.01.26 at 15:43:10 GMT',
-                    ],
-                    '2' => [
-                        'type' => 'text',
-                        'value' => '[09 TRUTH DROPS] 07.01.26 at 15:43:10 GMT',
-                    ],
-                    '3' => [
-                        'type' => 'text',
-                        'value' => '09 TRUTH DROPS | 07.01.26 at 15:43:10 GMT',
-                    ],
-                    '4' => [
-                        'type' => 'text',
-                        'value' => '[09 TRUTH DROPS] 07.01.26 at 15:43:10 GMT',
+                    'content' => [
+                        'type' => 'editor',
+                        'value' => '<p>Response time depends on request type and current queue volume. Typical windows are:</p><ul class="contact-wait-list"><li><strong>Corrections and factual issues:</strong> usually within 24 hours.</li><li><strong>Press and partnership requests:</strong> usually within 2 to 3 business days.</li><li><strong>General feedback and tips:</strong> usually within 3 to 5 business days.</li></ul>',
                     ],
                 ],
             ],

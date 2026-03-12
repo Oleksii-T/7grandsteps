@@ -46,14 +46,18 @@ class Category extends Model
     {
         $routeData = ['category' => $this];
 
-        if ($page != 1) {
-            $routeData['page'] = "page-$page";
-        }
-
         foreach ($includeQueryParams as $param) {
             if (request()->$param) {
                 $routeData[$param] = request()->$param;
             }
+        }
+
+        if ($page != 1) {
+            $routeData['page'] = "page-$page";
+        }
+
+        if (str_starts_with($routeData['tagSlug'] ?? '', 'page-')) {
+            unset($routeData['tagSlug']);
         }
 
         return route('categories.show', $routeData);
