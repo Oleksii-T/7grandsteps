@@ -19,7 +19,7 @@ trait HasAttachments
      */
     public function addAttachment($attachment, string $group, ?string $forceFileName = null)
     {
-        // dlog("HasAttachments@addAttachment $group | $this->id | ".self::class.': '.json_encode($attachment)); //! LOG
+        // dlog("HasAttachments@addAttachment $group | $this->id | " . self::class . ': ' . json_encode($attachment) ); //! LOG
 
         if (! $attachment) {
             // dlog(" empty"); //! LOG
@@ -128,7 +128,9 @@ trait HasAttachments
     private function transform($attachment)
     {
         if (is_string($attachment) && $this->isUrlString($attachment)) {
-            return ['file' => $this->downloadUrlAsUploadedFile($attachment)];
+            $downloadedFile = $this->downloadUrlAsUploadedFile($attachment);
+
+            return $downloadedFile ? ['file' => $downloadedFile] : [];
         }
 
         if (! is_array($attachment)) {
@@ -177,6 +179,10 @@ trait HasAttachments
 
     private function downloadUrlAsUploadedFile(string $url): ?UploadedFile
     {
+        if (! $this->isSupportedImageResponse($url)) {
+            return null;
+        }
+
         $tmpPath = tempnam(sys_get_temp_dir(), 'att_');
         if ($tmpPath === false) {
             return null;
@@ -198,10 +204,51 @@ trait HasAttachments
             return null;
         }
 
-        $mime = $response->header('Content-Type');
+        $mime = $this->normalizeMimeType($response->header('Content-Type'));
+
+        if (! $this->isSupportedImageResponse($url, $mime)) {
+            @unlink($tmpPath);
+
+            return null;
+        }
+
         $originalName = $this->makeDownloadedFileName($url, $mime);
 
         return new UploadedFile($tmpPath, $originalName, $mime ?: null, null, true);
+    }
+
+    private function isSupportedImageResponse(string $url, ?string $mime = null): bool
+    {
+        $extension = strtolower(pathinfo(parse_url($url, PHP_URL_PATH) ?? '', PATHINFO_EXTENSION));
+
+        if ($extension !== '' && ! $this->isSupportedImageExtension($extension)) {
+            return false;
+        }
+
+        if ($mime !== null) {
+            return $this->isSupportedImageMime($mime);
+        }
+
+        return $extension !== '';
+    }
+
+    private function isSupportedImageExtension(string $extension): bool
+    {
+        return in_array($extension, ['jpg', 'jpeg', 'png', 'gif', 'webp'], true);
+    }
+
+    private function isSupportedImageMime(string $mime): bool
+    {
+        return in_array($mime, ['image/jpeg', 'image/png', 'image/gif', 'image/webp'], true);
+    }
+
+    private function normalizeMimeType(?string $mime): ?string
+    {
+        if (! $mime) {
+            return null;
+        }
+
+        return strtolower(trim(explode(';', $mime)[0]));
     }
 
     private function makeDownloadedFileName(string $url, ?string $mime): string
@@ -222,11 +269,10 @@ trait HasAttachments
 
     private function guessExtensionFromMime(?string $mime): ?string
     {
+        $mime = $this->normalizeMimeType($mime);
         if (! $mime) {
             return null;
         }
-
-        $mime = strtolower(trim(explode(';', $mime)[0]));
 
         $map = [
             'image/jpeg' => 'jpg',
