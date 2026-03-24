@@ -8,6 +8,7 @@
           <li><a href="{{ route('privacy') }}">Privacy Policy</a></li>
           <li><a href="{{ route('terms') }}">Terms of Service</a></li>
           <li><a href="{{ route('cookiePolicy') }}">Cookies Policy</a></li>
+          <li><a href="{{ route('reviewPolicy') }}">Review Policy</a></li>
         </ul>
       </nav>
       <p class="footer-copy">© {{date('Y')}} 7grandsteps. All rights reserved.</p>
