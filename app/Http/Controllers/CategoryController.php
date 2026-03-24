@@ -17,6 +17,8 @@ class CategoryController extends Controller
             $tagSlug = null;
         }
 
+        $tag = $tagSlug ? Tag::where('slug', $tagSlug)->first() : null;
+
         $perPage = 6;
         $page = abs((int) filter_var($page, FILTER_SANITIZE_NUMBER_INT));
         $posts = $category->posts()
@@ -37,7 +39,7 @@ class CategoryController extends Controller
             $currentPage = $page;
             $page = Page::get('{category}');
 
-            return view('categories.show', compact('category', 'posts', 'game', 'page', 'hasMore', 'currentPage', 'tagSlug'));
+            return view('categories.show', compact('category', 'posts', 'game', 'page', 'hasMore', 'currentPage', 'tagSlug', 'tag'));
         }
 
         return $this->jsonSuccess('', [

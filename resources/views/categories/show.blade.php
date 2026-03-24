@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', ($game ? "Latest News on $game->name" : $category->meta_title) . ($currentPage != 1 ? " - Page $currentPage" : ''))
+@section('title', ($game ? "Latest News on $game->name" : (($tag ? ($tag->name.' ') : '') . $category->meta_title)) . ($currentPage != 1 ? " - Page $currentPage" : ''))
 @section('description', ($game ? "Read the most authoritative and fresh news about the $game->name!" : $category->meta_description) . ($currentPage != 1 ? " | Page $currentPage" : ''))
 @section('meta-image', $category->meta_thumbnail()?->url)
 @if ($currentPage != 1)
@@ -11,7 +11,12 @@
     <main class="category-page">
         <section class="category-intro">
             <header class="section-header">
-                <h1>{{ $game ? "Latest News on $game->name" : $category->name }}</h1>
+                <h1>
+                    {{ $game ? "Latest News on $game->name" : $category->name }}
+                    @if ($tag)
+                        > {{$tag->name}}
+                    @endif
+                </h1>
                 <p class="category-subtitle">
                     {{ $game ? "Fresh updates, analysis, and guides for $game->name." : ($category->description ?: 'Latest updates and editor picks from this category.') }}
                 </p>
