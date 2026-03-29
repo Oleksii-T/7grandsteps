@@ -6,6 +6,9 @@
 
     <nav class="top-nav" aria-label="Primary">
       <ul>
+        <li>
+          <a href="{{route('categories.show', 'news')}}">News</a>
+        </li>
         @foreach ($topTags->take(6) as $tag)
           <li>
             <a class="{{request()->tag == $tag->slug ? 'selected' : ''}}" href="{{route('categories.show', ['news', $tag->slug])}}">{{$tag->name}}</a>
