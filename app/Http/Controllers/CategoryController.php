@@ -17,9 +17,8 @@ class CategoryController extends Controller
             $tagSlug = null;
         }
 
-        $tag = $tagSlug ? Tag::where('slug', $tagSlug)->first() : null;
-
         $perPage = 6;
+        $tag = $tagSlug ? Tag::where('slug', $tagSlug)->first() : null;
         $page = abs((int) filter_var($page, FILTER_SANITIZE_NUMBER_INT));
         $posts = $category->posts()
             ->publised()

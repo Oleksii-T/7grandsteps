@@ -158,7 +158,7 @@ class PageBlockSeeder extends Seeder
                         'value' => 'Contact Us',
                     ],
                     'text' => [
-                        'type' => 'text',
+                        'type' => 'editor',
                         'value' => 'Questions, corrections, sponsorship requests, or tips? Send us a message and our editorial team will respond.',
                     ],
                 ],
@@ -168,53 +168,7 @@ class PageBlockSeeder extends Seeder
                         'value' => 'Send Message',
                     ],
                 ],
-                'we-offer' => [
-                    'title' => [
-                        'type' => 'text',
-                        'value' => 'What We Can Offer',
-                    ],
-                    'sub-title' => [
-                        'type' => 'text',
-                        'value' => 'Editorial help, partnership support, and fast routing to the right team.',
-                    ],
-                    'card-1-title' => [
-                        'type' => 'text',
-                        'value' => 'Corrections & Updates',
-                    ],
-                    'card-1-text' => [
-                        'type' => 'text',
-                        'value' => 'Report an issue in an article and we will review and patch the content when verified.',
-                    ],
-                    'card-2-title' => [
-                        'type' => 'text',
-                        'value' => 'Press & Media',
-                    ],
-                    'card-2-text' => [
-                        'type' => 'text',
-                        'value' => 'Reach our editorial team for interview requests, statement checks, and media coordination.',
-                    ],
-                    'card-3-title' => [
-                        'type' => 'text',
-                        'value' => 'Partnership Requests',
-                    ],
-                    'card-3-text' => [
-                        'type' => 'text',
-                        'value' => 'Discuss sponsorships and branded opportunities that fit our audience and standards.',
-                    ],
-                    'card-4-title' => [
-                        'type' => 'text',
-                        'value' => 'Story Tips',
-                    ],
-                    'card-4-text' => [
-                        'type' => 'text',
-                        'value' => 'Send leads, launches, or industry changes and we will route them to the right editor.',
-                    ],
-                ],
                 'wait' => [
-                    'title' => [
-                        'type' => 'text',
-                        'value' => 'How Long to Wait for the Answer?',
-                    ],
                     'content' => [
                         'type' => 'editor',
                         'value' => '<p>Response time depends on request type and current queue volume. Typical windows are:</p><ul class="contact-wait-list"><li><strong>Corrections and factual issues:</strong> usually within 24 hours.</li><li><strong>Press and partnership requests:</strong> usually within 2 to 3 business days.</li><li><strong>General feedback and tips:</strong> usually within 3 to 5 business days.</li></ul>',
