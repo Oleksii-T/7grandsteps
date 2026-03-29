@@ -28,9 +28,13 @@
             <div class="post-meta">
                 @if ($author)
                     <div class="author-block">
-                        <img src="{{ $authorAvatar ? $authorAvatar->url : asset('images/empty.png') }}" class="lazyload" alt="{{ $authorAvatar?->alt ?: $author->name }}" title="{{ $authorAvatar?->title ?: $author->name }}">
+                        <a href="{{ route('authors.show', $author) }}">
+                            <img src="{{ $authorAvatar ? $authorAvatar->url : asset('images/empty.png') }}" class="lazyload" alt="{{ $authorAvatar?->alt ?: $author->name }}" title="{{ $authorAvatar?->title ?: $author->name }}">
+                        </a>
                         <div>
-                            <span class="author-name">By {{ $author->name }}</span>
+                            <a href="{{ route('authors.show', $author) }}">
+                                <span class="author-name">By {{ $author->name }}</span>
+                            </a>
                             @if ($author->title)
                                 <span class="author-role">{{ $author->title }}</span>
                             @endif
