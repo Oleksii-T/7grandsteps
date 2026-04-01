@@ -10,7 +10,8 @@
     <meta property="og:title" content="@yield('title', $page?->meta_title)">
     <meta property="og:description" content="@yield('description', $page?->meta_description)">
     <meta name="description" content="@yield('description', $page?->meta_description)">
-    <meta name="robots" content="@yield('meta-robots', 'index, follow, max-image-preview:large')">
+    <meta name="robots" content="noindex, nofollow">
+    {{-- <meta name="robots" content="@yield('meta-robots', 'index, follow, max-image-preview:large')"> --}}
     <meta property="og:url" content="https://localhost.com{{request()->getRequestUri()}}">
     <meta property="og:site_name" content="7grandsteps">
     <meta property="og:type" content="@yield('meta-type', 'website')">
